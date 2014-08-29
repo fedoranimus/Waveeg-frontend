@@ -37,7 +37,11 @@ define(function(require, exports, module) {
 
     var background = new Surface({
       properties: {
-        backgroundColor: '#FA5C4F'
+        backgroundImage: 'url(./img/wave-logo.svg)',
+        //backgroundSize: '100px 100px',
+        border: 'black solid thin',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top'
       }
     });
 
@@ -54,11 +58,21 @@ define(function(require, exports, module) {
 
     scrollView.sequenceFrom(surfaces);
 
-    for (var i = 0, temp; i < 4; i++) {
-        temp = new TestView({size:[undefined,undefined], title: "Title " + i, subtitle: "Subtitle " + i, icon: "Icon " + i});
-        temp.pipe(scrollView);
-        surfaces.push(temp);
-    }
+
+
+    var selfView = new TestView({size:[undefined,undefined], title: "Self", subtitle: "Manage your ego", icon: "self"});
+    selfView.pipe(scrollView);
+    var trainView = new TestView({size:[undefined,undefined], title: "Train", subtitle: "Train your brain", icon: "train"});
+    trainView.pipe(scrollView);
+    var monitorView = new TestView({size:[undefined,undefined], title: "Monitor", subtitle: "Monitor your activity", icon: "monitor"});
+    monitorView.pipe(scrollView);
+    var shopView = new TestView({size:[undefined,undefined], title: "Shop", subtitle: "Expand your mind", icon: "shop"});
+    shopView.pipe(scrollView);
+
+    surfaces.push(selfView);
+    surfaces.push(trainView);
+    surfaces.push(monitorView);
+    surfaces.push(shopView);
 
     device.add(scrollView);
 

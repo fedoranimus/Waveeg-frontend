@@ -32,11 +32,16 @@ define(function(require, exports, module) {
 
     function createIcon() {
       var surf = new Surface({
-        size: [100, 100],
-        content: this.options.icon,
+        size: [150, 150],
+        //content: this.options.icon,
         properties: {
-          backgroundColor: 'green',
-          textAlign: 'center'
+          backgroundColor: '#999999',
+          backgroundImage: 'url(./img/' + this.options.icon + '-icon.svg)',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          textAlign: 'center',
+          borderRadius: '75px',
+          backgroundSize: '100px 100px'
         }
       });
       var mod = new StateModifier({
@@ -52,12 +57,13 @@ define(function(require, exports, module) {
             size: [undefined, true],
             content: this.options.title,
             properties: {
-                backgroundColor: 'red',
+                color: '#BDCCD4',
+                fontSize: '32pt',
                 textAlign: 'center',
             }
         });
         var mod = new StateModifier({
-            origin: [0.6, 0.6]
+            origin: [0.75, 0.75]
         });
         surf.pipe(this._eventOutput);
         this.add(mod).add(surf);
@@ -68,12 +74,14 @@ define(function(require, exports, module) {
             size: [undefined, true],
             content: this.options.subtitle,
             properties: {
-                backgroundColor: 'blue',
+                color: '#BDCCD4',
+                fontSize: '24pt',
+                fontStyle: 'italic',
                 textAlign: 'center',
             }
         });
         var mod = new StateModifier({
-            origin: [0.7, 0.7]
+            origin: [0.9, 0.9]
         });
         surf.pipe(this._eventOutput);
         this.add(mod).add(surf);
