@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var StateModifier = require('famous/modifiers/StateModifier');
 
     // constructor
-    function TestView() {
+    function MenuView() {
         View.apply(this, arguments);
 
         createIcon.call(this);
@@ -15,11 +15,11 @@ define(function(require, exports, module) {
     }
 
     // prototype
-    TestView.prototype = Object.create(View.prototype);
-    TestView.prototype.constructor = TestView;
+    MenuView.prototype = Object.create(View.prototype);
+    MenuView.prototype.constructor = MenuView;
 
     // options
-    TestView.DEFAULT_OPTIONS = {};
+    MenuView.DEFAULT_OPTIONS = {};
 
     // helper functions
     function createBackground() {
@@ -49,7 +49,6 @@ define(function(require, exports, module) {
       });
       surf.pipe(this._eventOutput);
       this.add(mod).add(surf);
-
     }
 
     function createTitle() {
@@ -57,13 +56,13 @@ define(function(require, exports, module) {
             size: [undefined, true],
             content: this.options.title,
             properties: {
-                color: '#BDCCD4',
+                color: '#FFFFFF',
                 fontSize: '32pt',
                 textAlign: 'center',
             }
         });
         var mod = new StateModifier({
-            origin: [0.75, 0.75]
+            origin: [0.68, 0.68]
         });
         surf.pipe(this._eventOutput);
         this.add(mod).add(surf);
@@ -74,18 +73,18 @@ define(function(require, exports, module) {
             size: [undefined, true],
             content: this.options.subtitle,
             properties: {
-                color: '#BDCCD4',
+                color: '#FFFFFF',
                 fontSize: '24pt',
                 fontStyle: 'italic',
                 textAlign: 'center',
             }
         });
         var mod = new StateModifier({
-            origin: [0.9, 0.9]
+            origin: [0.75, 0.75]
         });
         surf.pipe(this._eventOutput);
         this.add(mod).add(surf);
     }
 
-    module.exports = TestView;
+    module.exports = MenuView;
 });

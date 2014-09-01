@@ -6,49 +6,44 @@ define(function(require, exports, module) {
     var Transform = require('famous/core/Transform');
     var ImageSurface = require('famous/surfaces/ImageSurface');
     var StateModifier = require('famous/modifiers/StateModifier');
-    //var DeviceView = require('DeviceView');
     var View = require('famous/core/View');
     var ScrollView = require('famous/views/Scrollview');
-    var TestView = require('TestView');
-
-    var device;
-
-    function createDevice() {
-      var deviceOptions = {
-        type: 'iphone',
-        height: window.innerHeight - 100
-      };
-
-      device = new View(deviceOptions);
-
-      var deviceModifier = new StateModifier({
-        //size: device.getSize(),
-        size: [300, 400],
-        origin: [0.5, 0.5]
-      });
-
-      mainContext.add(deviceModifier).add(device);
-    }
+    var MenuView = require('MenuView');
 
     // create the main context
     var mainContext = Engine.createContext();
 
-    createDevice();
 
     var background = new Surface({
+      size: [undefined, undefined],
       properties: {
-        backgroundImage: 'url(./img/wave-logo.svg)',
-        //backgroundSize: '100px 100px',
-        border: 'black solid thin',
+        backgroundImage: 'url(./img/menu-background.svg)',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top'
+        backgroundSize: 'cover'
       }
     });
+    mainContext.add(background);
 
-    device.add(background);
+    var title = new Surface({
+      size: [true, true],
+      content: 'Wave',
+      properties: {
+        color: '#FFFFFF',
+        fontSize: '32pt',
+        textAlign: 'center',
+      }
+    });
+    var mod = new StateModifier({
+        origin: [0.2, 0.2]
+    });
+
+    //mod.add(title);
+
+    mainContext.add(title).add(mod);
+
 
     var menuOptions =  {
-      direction: 1, //Utility.Direction.X
+      direction: 0, //change to 1 for vertical scrolling
       paginated: true
     };
 
@@ -58,15 +53,13 @@ define(function(require, exports, module) {
 
     scrollView.sequenceFrom(surfaces);
 
-
-
-    var selfView = new TestView({size:[undefined,undefined], title: "Self", subtitle: "Manage your ego", icon: "self"});
+    var selfView = new MenuView({size:[undefined,undefined], title: "Self", subtitle: "Manage your ego", icon: "self"});
     selfView.pipe(scrollView);
-    var trainView = new TestView({size:[undefined,undefined], title: "Train", subtitle: "Train your brain", icon: "train"});
+    var trainView = new MenuView({size:[undefined,undefined], title: "Train", subtitle: "Train your brain", icon: "train"});
     trainView.pipe(scrollView);
-    var monitorView = new TestView({size:[undefined,undefined], title: "Monitor", subtitle: "Monitor your activity", icon: "monitor"});
+    var monitorView = new MenuView({size:[undefined,undefined], title: "Monitor", subtitle: "Monitor your activity", icon: "monitor"});
     monitorView.pipe(scrollView);
-    var shopView = new TestView({size:[undefined,undefined], title: "Shop", subtitle: "Expand your mind", icon: "shop"});
+    var shopView = new MenuView({size:[undefined,undefined], title: "Shop", subtitle: "Expand your mind", icon: "shop"});
     shopView.pipe(scrollView);
 
     surfaces.push(selfView);
@@ -74,6 +67,6 @@ define(function(require, exports, module) {
     surfaces.push(monitorView);
     surfaces.push(shopView);
 
-    device.add(scrollView);
+    mainContext.add(scrollView);
 
 });
