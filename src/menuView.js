@@ -73,7 +73,7 @@ define(function(require, exports, module) {
             size: [undefined, true],
             content: this.options.subtitle,
             properties: {
-                color: '#FFFFFF',
+                color: '#BDCCD4',
                 fontSize: '24pt',
                 fontStyle: 'italic',
                 textAlign: 'center',

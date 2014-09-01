@@ -29,17 +29,16 @@ define(function(require, exports, module) {
       content: 'Wave',
       properties: {
         color: '#FFFFFF',
-        fontSize: '32pt',
+        fontSize: '48pt',
         textAlign: 'center',
       }
     });
     var mod = new StateModifier({
-        origin: [0.2, 0.2]
+        //origin:[0.5,0.5], // Set the origin to the center, this will center the rotation as well
+        align:[0.3,0.1], // Set the surface's origin to the upper left corner of the parentorigin: [0.5, 0.5]
     });
 
-    //mod.add(title);
-
-    mainContext.add(title).add(mod);
+    mainContext.add(mod).add(title);
 
 
     var menuOptions =  {
