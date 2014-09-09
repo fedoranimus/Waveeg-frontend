@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Wave</title>
+  <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- shims for backwards compatibility -->
+  <script type="text/javascript" src="http://code.famo.us/lib/functionPrototypeBind.js"></script>
+  <script type="text/javascript" src="http://code.famo.us/lib/classList.js"></script>
+  <script type="text/javascript" src="http://code.famo.us/lib/requestAnimationFrame.js"></script>
+
+  <link rel="stylesheet" href="css/app.css">
+
+
+  <script src="bower_components/angular/angular.js"></script>
+
+  <!-- famous -->
+  <link rel="stylesheet" type="text/css" src="bower_components/famous/famous.css" />
+  <link rel="stylesheet" type="text/css" src="bower_components/famous-angular/famous-angular.css" />
+  <script src="bower_components/famous/famous-global.js"></script>
+  <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
+
+</head>
+<body class="app-body">
+    <fa-state-modifier fa-size="[true, true]" fa-align="[0.3, 0.1]" fa-origin="[0.5, 0.5]">
+      <fa-surface class="app-title">
+        Wave
+      </fa-surface>
+    </fa-modifier>
+
+    <fa-scroll-view ng-controller="menuController" fa-pipe-from="eventHandler" fa-options="options.myScrollView">
+    <fa-view ng-repeat="menuItem in menuList">
+       <menu-view></menu-view>
+
+    </fa-view>
+</fa-scroll-view>
+</body>
+</html>
