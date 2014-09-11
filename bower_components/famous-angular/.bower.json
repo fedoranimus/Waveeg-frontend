@@ -39,7 +39,6 @@
     "commit": "8b4a0515ee174d6fc4ccada484700fcba906dfce"
   },
   "_source": "git://github.com/Famous/famous-angular.git",
-  "_target": "~0.3.0",
-  "_originalSource": "famous-angular",
-  "_direct": true
+  "_target": "0.3.0",
+  "_originalSource": "famous-angular"
 }

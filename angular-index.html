@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="waveApp">
 <head>
   <meta charset="utf-8">
   <title>Wave</title>
@@ -17,6 +17,13 @@
 
 
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
 
   <!-- famous -->
   <link rel="stylesheet" type="text/css" src="bower_components/famous/famous.css" />
@@ -24,19 +31,29 @@
   <script src="bower_components/famous/famous-global.js"></script>
   <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
 
+  <!-- app -->
+  <script src="src/app.js"></script>
+
 </head>
 <body class="app-body">
-    <fa-state-modifier fa-size="[true, true]" fa-align="[0.3, 0.1]" fa-origin="[0.5, 0.5]">
+
+    <fa-modifier fa-origin="[0.5, 0.5]" fa-align="[0.3, 0.1]" >
       <fa-surface class="app-title">
         Wave
       </fa-surface>
     </fa-modifier>
 
-    <fa-scroll-view ng-controller="menuController" fa-pipe-from="eventHandler" fa-options="options.myScrollView">
-    <fa-view ng-repeat="menuItem in menuList">
-       <menu-view></menu-view>
-
+    <fa-scroll-view ng-controller="menuController" fa-pipe-from="eventHandler" fa-options="options.menuScrollView" >
+    <fa-view ng-repeat="menuItem in menuItems">
+       <fa-modifier fa-translate="[0, 0, 0]" fa-size="[300, 300]">
+         <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.eventHandler -->
+         <fa-surface fa-pipe-to="eventHandler"
+                     fa-size="[200, 200]"
+                     fa-background-color="'red'">
+         </fa-surface>
+       </fa-modifier>
     </fa-view>
 </fa-scroll-view>
+
 </body>
 </html>
