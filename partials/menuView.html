@@ -1,0 +1,30 @@
+<fa-view fa-pipe-to="eventHandler" fa-background-color="menuItem.color">
+
+ <!-- Menu icon region -->
+ <fa-modifier fa-origin="[0.5, 0.45]" fa-size="[150, 150]">
+    <fa-surface fa-pipe-to="eventHandler"> 
+      <img class="menuItem-icon" ng-src="{{menuItem.iconUrl}}" />
+    </fa-surface> 
+ </fa-modifier>
+
+ <!-- Title region -->
+ <fa-modifier fa-origin="[0.68, 0.68]" fa-size="[undefined, true]">
+    <fa-surface class="menuItem-title" fa-pipe-to="eventHandler">
+      {{menuItem.title}}
+    </fa-surface> 
+ </fa-modifier>
+
+ <!-- subtitle region -->
+ <fa-modifier fa-origin="[0.75, 0.75]" fa-size="[undefined, true]">
+    <fa-surface class="menuItem-subtitle" fa-pipe-to="eventHandler">
+      {{menuItem.subtitle}}
+    </fa-surface> 
+ </fa-modifier>
+
+ <!-- background region -->
+ <fa-modifier fa-size="[undefined, undefined]">
+   <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.eventHandler -->
+   <fa-surface fa-pipe-to="eventHandler"></fa-surface>
+ </fa-modifier>
+
+</fa-view >

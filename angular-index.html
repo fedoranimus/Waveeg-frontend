@@ -26,34 +26,64 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
 
   <!-- famous -->
-  <link rel="stylesheet" type="text/css" src="bower_components/famous/famous.css" />
-  <link rel="stylesheet" type="text/css" src="bower_components/famous-angular/famous-angular.css" />
+  <link rel="stylesheet" type="text/css" href="bower_components/famous-angular/dist/famous-angular.css" />
   <script src="bower_components/famous/famous-global.js"></script>
   <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
 
   <!-- app -->
-  <script src="src/app.js"></script>
+  <script type="text/javascript" src="src/app.js"></script>
+  <script type="text/javascript" src="src/directives.js"></script>
+  <script type="text/javascript" src="src/controllers.js"></script>
+
 
 </head>
-<body class="app-body">
-
-    <fa-modifier fa-origin="[0.5, 0.5]" fa-align="[0.3, 0.1]" >
-      <fa-surface class="app-title">
-        Wave
+<body>
+  <fa-app id="app">
+      <fa-surface class="app-background" fa-size="[true, true]">
+        <img src="img/menu-background.svg"></img>
       </fa-surface>
-    </fa-modifier>
 
-    <fa-scroll-view ng-controller="menuController" fa-pipe-from="eventHandler" fa-options="options.menuScrollView" >
-    <fa-view ng-repeat="menuItem in menuItems">
-       <fa-modifier fa-translate="[0, 0, 0]" fa-size="[300, 300]">
-         <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.eventHandler -->
-         <fa-surface fa-pipe-to="eventHandler"
-                     fa-size="[200, 200]"
-                     fa-background-color="'red'">
-         </fa-surface>
-       </fa-modifier>
-    </fa-view>
-</fa-scroll-view>
+      <fa-view ng-controller="appController">
+        <fa-modifier fa-align="[0.3, 0.1]">
+          <fa-surface fa-color="'white'" >
+            <div class="app-title">{{title}}</div>
+          </fa-surface>
+        </fa-modifier>
+      </fa-view>
 
+        <fa-scroll-view ng-controller="menuController" fa-pipe-from="eventHandler" fa-options="options.menuScrollView" fa-pipe-to="eventHandler">
+          <fa-view ng-repeat="menuItem in menuItems" fa-pipe-to="eventHandler" fa-background-color="menuItem.color">
+
+           <!-- Menu icon region -->
+           <fa-modifier fa-origin="[0.5, 0.45]" fa-size="[150, 150]">
+              <fa-surface fa-pipe-to="eventHandler"> 
+                <img class="menuItem-icon" ng-src="{{menuItem.iconUrl}}" />
+              </fa-surface> 
+           </fa-modifier>
+
+           <!-- Title region -->
+           <fa-modifier fa-origin="[0.68, 0.68]" fa-size="[undefined, true]">
+              <fa-surface class="menuItem-title" fa-pipe-to="eventHandler">
+                {{menuItem.title}}
+              </fa-surface> 
+           </fa-modifier>
+
+           <!-- subtitle region -->
+           <fa-modifier fa-origin="[0.75, 0.75]" fa-size="[undefined, true]">
+              <fa-surface class="menuItem-subtitle" fa-pipe-to="eventHandler">
+                {{menuItem.subtitle}}
+              </fa-surface> 
+           </fa-modifier>
+
+           <!-- background region -->
+           <fa-modifier fa-size="[undefined, undefined]">
+             <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.eventHandler -->
+             <fa-surface fa-pipe-to="eventHandler"></fa-surface>
+           </fa-modifier>
+
+         </fa-view >
+        </fa-scroll-view> 
+    </fa-modifier>  
+  </fa-app>
 </body>
 </html>

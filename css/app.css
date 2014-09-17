@@ -5,22 +5,56 @@ html {
     width: 100%;
 }
 
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
 .double-sided {
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
 }
 
-.app-body {
-  background-image: url('../img/menu-background.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
+#app {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.app-background .fa-surface {
   height: 100%;
-  width: 100%;
+}
+
+.app-background .fa-surface img {
+  height: 100%;
 }
 
 .app-title {
   color: #FFFFFF;
   font-size: 48pt;
+}
+
+.menuItem-icon {
+  padding: 25px;
+  background-color: #999999;
+  border-radius: 75px;
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+.menuItem-title {
+  color: #FFFFFF;
+  font-size: 32pt;
+  text-align: center;
+}
+
+.menuItem-subtitle {
+  color: #FFFFFF;
+  font-size: 24pt;
+  font-style: italic;
   text-align: center;
 }
